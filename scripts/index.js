@@ -54,5 +54,5 @@ const createPost = () => {
 
   postLikeDiv.appendChild(postBtn);
 
-  document.querySelector(".posts").appendChild(postItem);
+  document.querySelector(".posts").prepend(postItem);
 };
