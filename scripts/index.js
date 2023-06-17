@@ -1,19 +1,58 @@
-let firstName = "Lucas marins";
+const userProfile = {
+  username: "Lucas",
+  profilePicture: "./assets/images/In-White-128.png",
+  jobTitle: "IT",
+};
 
-let username = document.querySelectorAll(".nav__username");
+const loadUserProfile = () => {
+  let findUsername = document.querySelectorAll(".nav__username");
 
-for (const element of username) {
-  element.innerText = firstName;
-}
+  for (const element of findUsername) {
+    element.innerText = userProfile.username;
+  }
 
-let jobTitle = "Winner";
+  let findJobTitle = document.querySelector(".profile-card__title");
 
-let jobTitleElement = document.querySelector(".profile-card__title");
+  findJobTitle.innerText = userProfile.jobTitle;
 
-jobTitleElement.innerText = jobTitle;
+  let findProfilePicture = document.querySelector(".nav__profile-picture");
 
-let picture = "./assets/images/In-White-128.png";
+  findProfilePicture.src = userProfile.profilePicture;
+};
 
-let profilePicture = document.querySelector(".nav__profile-picture");
+loadUserProfile();
 
-profilePicture.src = picture;
+const createPost = () => {
+  // Get the text from the post text box
+  let userPostText = document.querySelector(".data-post-text").value;
+  console.log(userPostText);
+  // create a new post div
+  let postItem = document.createElement("div");
+  postItem.classList.add("posts__item");
+
+  let postUserName = document.createElement("div");
+  postUserName.classList.add("posts__username");
+  postUserName.innerText = userProfile.username;
+
+  let postContent = document.createElement("div");
+  postContent.classList.add("posts__content");
+
+  let postContentPar = document.createElement("p");
+  postContentPar.innerText = userPostText;
+
+  let postLikeDiv = document.createElement("div");
+  postLikeDiv.classList.add("posts__like");
+
+  let postBtn = document.createElement("button");
+  postBtn.innerText = "like";
+  // append this new post div to the post container
+  postItem.appendChild(postUserName);
+  postItem.appendChild(postContent);
+  postItem.appendChild(postLikeDiv);
+
+  postContent.appendChild(postContentPar);
+
+  postLikeDiv.appendChild(postBtn);
+
+  document.querySelector(".posts").appendChild(postItem);
+};
